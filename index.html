@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Crete+Round|Righteous" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    <style type="text/css">
+        .backg{
+            background-color: #e6f7ff;
+            height: 580px;
+            width: 350px;
+            margin-left: 450px;
+            
+
+        }
+        #board{
+            position: relative;
+            top:80px;
+            
+        }
+        #frnt{
+            color:#00264d;
+            font-size: 40px;
+            position: relative;
+            bottom:430px;
+            font-weight: bolder; 
+            font-family: 'Righteous', cursive;
+            text-align: center;
+        }
+        #door{
+            background-color: transparent;
+            width: 75px;
+            height: 145px;
+            border:none;
+            outline: none;
+            position: relative;
+            bottom: 230px;
+            left:237px;
+        }
+        .shop{
+            background-color: #ffcccc;
+            height: 510px;
+            width: 350px;
+            display: none;
+        }
+        .icecream{
+            height:410px;
+            width: 350px;
+            
+        }
+        #cone{
+            position: relative;
+            top:110px;
+            left:35px;
+        }
+        #scoop1{
+            position: relative;
+            right:5px;
+            bottom:120px;
+            transform: scale(1.2);
+            -webkit-transform:scale(1.2);
+
+            
+        }
+        #f1{
+            background-color: #ff6666;
+            height:110px;
+            width:110px;
+            border-radius: 50%;  
+            position: relative;
+            bottom:50px;
+            left:115px;
+
+            
+        }
+        #f2,#f3,#f4,#f5{
+            background-color:#ff6666;
+            height:40px;
+            width: 40px;
+            border-radius:50%;
+            position: relative;
+            
+        }
+        #f2{
+            bottom: 85px;
+            left:110px;  
+        }
+        #f3{
+            bottom: 125px;
+            left:195px;-
+        }
+        #f4{
+            bottom:155px;
+            left:137px;
+        }
+        #f5{
+            bottom:195px;
+            left:173px; 
+        }
+        .menu{
+            background-color:#ff8080;
+            height: 100px;
+            width: 350px;
+            padding-top:20px;
+             
+
+        }
+        .topping{
+            height:55px;
+            width:110px;
+            background-color: transparent;
+            border-radius:55px 55px 0px 0px; 
+            position: relative;
+            
+
+        }
+        a{
+            color:#ff8080;
+            position:relative;
+            font-size:20px;
+            bottom:215px;
+            display:none;
+            left:100px;
+        }
+        .fruit{
+            position: relative;
+            bottom:350px;
+            left:140px; 
+            transform: rotate(-20deg);
+            -webkit-transform: rotate(-20deg);
+        }
+        .main{
+            position: relative;
+            bottom:40px; 
+        }
+        .text{
+            display: none;
+            position: relative;
+            top:15px;
+            text-align: center;
+            font-size: 30px; 
+            color:#ff8080;
+            font-family: 'Crete Round', serif; 
+        }
+        #scoops,#toppings,#sprinkles,#fruits{
+             
+            background-color: white;
+            color:#ff8080; 
+            border:none;
+            position: relative;
+            padding-left: 2px;
+            padding-right: 2px;
+            width:100px; 
+            height: 25px;
+            outline: none;
+            font-family: 'Crete Round', serif;
+            transform: scale(1.3);
+            -webkit-transform: scale(1.3);
+
+        }
+        #scoops{
+            left:40px;
+            
+            bottom: 10px;
+            
+        }
+        #toppings{
+            left:110px;
+            bottom: 10px;
+            
+        }
+        #sprinkles{
+            left:40px;
+            
+            
+        }
+        #fruits{
+            left:110px;
+            
+            
+        }
+        #done{
+            position: relative;
+            bottom: 300px;
+            left:240px;
+            color: #ff8080;
+            background-color: white;
+            font-size: 25px;
+            border:none; 
+            font-family: 'Crete Round', serif;
+        }
+
+        @keyframes shake{
+            50%{
+                transform: rotate(20deg);
+            }
+            
+        }
+        @-webkit-keyframes shake{
+            50%{
+                transform: rotate(20deg);
+            }
+            
+        }
+    </style>
+
+
+
+
+    <script type="text/javascript">
+         var s1=["#ff4d88","#a6ff4d","#ffd11a","#80d4ff","#800080","#ffff33","#ff6666"];
+        var s=0;
+        var t1=["#ff1a66","#ff9933","#ffffff","#994d00","#66ff66","transparent"];
+        var t=0;
+        var u1=["https://i.imgur.com/VKj4wiE.png","https://i.imgur.com/zPurVbV.png","https://i.imgur.com/6cU9oFX.png",""];
+        var u=0;
+        var f1=["https://i.imgur.com/8m06kSt.png","https://i.imgur.com/oTjHYh2.png","https://i.imgur.com/U4lGGB0.png","https://i.imgur.com/m4F212q.png","https://i.imgur.com/51KC9nx.png","https://i.imgur.com/kBnsaHk.png","https://i.imgur.com/jzaBFEX.png"];
+        var f=0;
+        $(document).ready(function(){
+            $("#door").click(function(){
+                $(".front").hide();
+                $(".shop").show();
+            });
+            
+            $("#scoops").click(function(){
+                $("#f1,#f2,#f3,#f4,#f5").css('backgroundColor', s1[s]);
+                if(s==(s1.length)-1){
+                    s=0;
+                }
+                else{
+                    s++;
+                }
+            });
+            $("#toppings").click(function(){
+                $(".topping").css('backgroundColor', t1[t]);
+                if(t==(t1.length)-1){
+                    t=0;
+                }
+                else{
+                    t++;
+                }
+                
+            });
+            $("#sprinkles").click(function(){
+                $(".sprinkle").attr("src",u1[u]);
+                if(u==(u1.length)-1){
+                    u=0;
+                }
+                else{
+                    u++;
+                }
+            });
+            $("#fruits").click(function(){
+                $(".fruit").attr("src",f1[f]);
+                if(f==(f1.length)-1){
+                    f=0;
+                }
+                else{
+                    f++;
+                }
+            });
+            $("#done").click(function(){
+                $(".menu").hide();
+                $(".main").css({"animation":"shake 2s infinite","-webkit-animation":"shake 2s infinite","transform":"rotate(-20deg)","-webkit-transform":"rotate(-20deg)","top":"10px"});
+                $("#done").hide();
+                $(".text").show();
+                $("a").show();
+            });
+
+        });
+    </script>
+  
+</head>
+<body>
+    <div class="backg">
+        <div class="front">
+            <img src="https://i.imgur.com/fI3XJ4f.png" id="board">
+            <h1 id="frnt">ICECREAM SHOP</h1>
+            <button type="button" id="door"><b>Welcome to Niraj's Icream Shop</b> TAP HERE TO ENTER</button>
+        </div>
+        <div class="shop">
+            <div class="menu">
+                <input  type="button" id="scoops" value="Flavours">
+                <input type="button" id="toppings" value="Toppings"><br>
+                <input type="button" id="sprinkles" value="Sprinkles">
+                <input type="button" id="fruits" value="Fruits">
+                
+            </div>
+
+            <div class="icecream">
+
+                <div class="text">Your Icecream is Ready!!
+                                     Niraj Thagunna</div>
+                
+                <div class="main">
+                    
+                    <img src="https://i.imgur.com/dIayddm.png" height="300px" width="270px" id="cone">
+                    <div id="scoop1">
+                        <div id="f1">
+                            <div class="topping">
+                                <img class="sprinkle" src="" >
+                            </div>
+
+                        </div>
+                        <div id="f2"></div>
+                        <div id="f3"></div>
+                        <div id="f4"></div>
+                        <div id="f5"></div>
+                        <img class="fruit" src="https://i.imgur.com/jzaBFEX.png"  width="50px" height="55px">
+                        
+                    </div>
+                </div>
+                <button type="button" id="done">DONE</button>
+                 <a href="https://www.youtube.com/channel/UCCvlM1ZMtqAGJyDlWVb63LQ?view_as=subscriber">My Youtube Channel</a>
+            </div>
+           
+        </div>
+    </div>
+    
+</body>
+</html>
